@@ -54,10 +54,25 @@ function evenOdd(num) {
 evenOdd(844424)
 
 
-for(let i = 0; i < 10; i++) {
-    console.log('Hello world')
+for(let i = 0; i <= 5; i= i +2) {
+    console.log('Hello world ' + i)
 }
 
-for(let i = 0; i <= 5; i++) {
-    console.log('Hello world ' + i)
+const arrs = [1, 2, 5, 8];
+const arrResult = []
+const length = arrs.length; // same as the i < arrs.length;
+
+for(let i = 0; i < arrs.length; i++) {
+    arrResult.push(arrs[i] + 2) 
+    console.log(i)
+}
+console.log(arrResult)
+
+
+let i = 0;
+
+while(i< 5) {
+    console.log('Hello DSA');
+    
+    i++;
 }
