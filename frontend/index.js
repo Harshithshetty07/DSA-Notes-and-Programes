@@ -132,3 +132,48 @@ return larNum
 
 let resLarg = largestNumber(largest)
 console.log(resLarg)
+
+
+// Problem 4: Find second largest number in an array
+
+let secondLarg = [4, 10, 8, 18, 0, 7, 15, 18 ]
+
+function secondLargest() {
+    if(secondLarg.length < 2) return null; 
+
+    let firstLar = 0; // -Infinity for if array has hold -ve numbers
+    let secondLar = 0;  // -Infinity for if array has hold -ve numbers
+
+    for(let i = 0; i< secondLarg.length; i++) {
+        if(secondLarg[i] > firstLar) {
+            secondLar = firstLar;
+            firstLar = secondLarg[i]
+        }
+        else if( secondLarg[i] > secondLar && secondLarg[i] != firstLar) {
+            secondLar = secondLarg[i]
+        }
+    }
+    return secondLar;
+}
+
+let secondRes = secondLargest();
+console.log(secondRes)
+
+// Loop inside another Loop
+// for(let i =0; i< 3; i++) {
+//     for(let j = 0; j< i; j++) {
+//         console.log(i , j)
+//     }
+// }
+
+// for(let i =0; i< 3; i++) {
+//     for(let j = i; j > 0; j--) {
+//         console.log(i , j)
+//     }
+// }
+
+for(let i =2; i > 0; i--) {
+    for(let j = 0; j < i; j++) {
+        console.log(i , j)
+    }
+}
