@@ -172,8 +172,190 @@ console.log(secondRes)
 //     }
 // }
 
-for(let i =2; i > 0; i--) {
-    for(let j = 0; j < i; j++) {
-        console.log(i , j)
-    }
+// for(let i =2; i > 0; i--) {
+//     for(let j = 0; j < i; j++) {
+//         console.log(i , j)
+//     }
+// }
+
+
+// Star Pattern
+// Problem : * * * * create a star pattern
+//           * * * *
+//           * * * *
+//           * * * *
+
+// answer : 
+
+function fourStar(n) {
+    for(let i = 0; i < n; i++) {
+            let row = ''
+
+        for(let j = 0; j < n; j++) {
+            row = row + '*'
+        }
+        console.log(row)
+} 
 }
+        fourStar(4);
+
+        // or 
+
+        // let n = 4;
+        // for(let i = 0; i < n; i++)  {
+        //     let row = '';
+        //     for(let j = 0; j < n; j++) {
+        //         row = row + '*'
+        //     }
+        //     console.log(row)
+        // }
+
+
+     // Problem 6 : 
+     /* 
+                *
+                *   *
+                *   *  *
+                *   *  * *
+     */
+
+     // Answer : 
+
+     let a = 4;
+     for(let i = 0; i < a; i++) {
+        let row = '';
+        for(let j = 0; j < i + 1; j++) {
+            row = row + '*'
+        }
+        console.log(row)
+     }
+
+        // Problem 7 
+        /* 
+        1,
+        1, 2, 
+        1, 2, 3
+        1, 2, 3, 4
+        */
+
+        // answer: 
+
+        let c = 5;
+        for(let i = 0; i < c; i++) {   
+            let row = ''
+            for(let j = 0; j < i + 1; j++) {
+                row = row + (j + 1)
+            }
+            console.log(row)
+
+        }
+
+        /* 
+        Problem 8 : 
+        1
+        2, 2
+        3, 3, 3
+        4, 4, 4, 4
+        5, 5, 5, 5, 5
+        */
+
+        // answer : 
+
+        let p = 5;
+        for(let i = 0; i < p; i++) {
+            let row = '';
+            for(let j = 0; j < i + 1; j++) {
+                row = row + (i + 1);
+            }
+            console.log(row)
+        }
+
+
+        /* 
+        Problem 9: 
+        1, 2, 3, 4, 5
+        1, 2, 3, 4
+        1, 2, 3
+        1, 2
+        1
+        */
+        // answer: 
+        let l = 5;
+        for(let i = 0; i < l; i++) {
+            let row = '';
+            for(let j = 0; j < l - i; j++) {
+                row = row + (j +1)
+            }
+            console.log(row)
+        }
+
+        /* 
+        Problem 10: 
+                                *
+                            *   *
+                        *   *   *
+                    *   *   *   *
+                *   *   *   *   *
+        */
+        // answer :
+
+        for(let i = 0; i < l; i++) {
+            let row = '';
+            for(let j = 0; j < l - (i + 1); j++) {
+                row = row + '-';
+            }
+            for(let k = 0; k < i + 1; k++) {
+                row = row + '*'
+            }
+            console.log(row)
+        }
+
+        /* 
+        Problem 10: 
+        1
+        1 0
+        1 0 1
+        1 0 1 0
+        1 0 1 0 1
+        1 0 1 0 1 0
+        */
+        
+        // answer :
+
+        for(let i = 0; i < l; i++) {
+            let row = '';
+            let switchOne = 1;
+            for(let j = 0; j < i +1; j++) {
+                row = row + switchOne;
+                if(switchOne == 1) {
+                    switchOne = 0;
+                } else {
+                    switchOne = 1
+                }
+            }
+            console.log(row)
+        }
+
+        /* 
+        Problem 12 : 
+        1
+        0 1
+        0 1 0
+        1 0 1 0
+        1 0 1 0 1
+        */
+        // answer: 
+            let switchOne = 1;
+            
+        for(let i = 0; i < l; i++) {
+            let row = '';
+            for(let j = 0; j < i +1; j++) {
+                row = row + switchOne;
+                if(switchOne == 1) {
+                    switchOne = 0;
+                } else {
+                    switchOne = 1
+                }
+            }
+            console.log(row)
+        }
