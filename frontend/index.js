@@ -359,3 +359,47 @@ function fourStar(n) {
             }
             console.log(row)
         }
+
+
+        /* Problem 13: Write a function that returns the count of digits in a number 
+        */
+
+        function countNumber(n) {
+            if(n == 0) return 1;
+            n = Math.abs(n)
+            let count = 0;
+
+            while( n > 0 ) {
+                n = Math.floor(n / 10);
+                count++
+            }
+            return count
+        }
+        let countNumberRes = countNumber(-259);
+        console.log(countNumberRes)
+
+        /* Problem 14 : Palindrome Number - means if we read a number left to right or right to left it should be same number ex: 121
+        
+        */
+         function palidromeNumber(n) {
+            if(n < 0 ) return false
+            
+            let rev = 0;
+            let nCopy = n
+
+            while(n > 0) {
+                let rem = n % 10;                  // This will gives you last number
+                rev = (10 * rev) + rem;
+                n = Math.floor(n / 10)                     // This will removes the last number
+            }
+            // if(rev == nCopy) {
+            //     return true
+            // }
+            // else {
+            //     return false
+            // }
+
+            return rev === nCopy
+         }
+         let palidromeNumberRes = palidromeNumber(121);
+         console.log(palidromeNumberRes)
