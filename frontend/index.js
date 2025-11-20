@@ -157,3 +157,66 @@ function moveZero(nums) {
 
 let nums = [1, 0, 2, 0, 3, 5]
 console.log(moveZero(nums))
+
+
+//  Max Consecutive Ones
+
+function maxConsecutive(b) {
+    let currCount = 0;
+    let maxCount = 0;
+
+    for(let i = 0; i < b.length; i++) {
+        if(b[i] == 1) {
+            currCount++;
+        }
+        else{
+            maxCount = Math.max(currCount, maxCount);
+            currCount = 0;
+        }
+    }
+    return Math.max(maxCount, currCount)
+}
+
+let b = [1, 0, 1, 1, 0, 0, 1, 1, 1, 2]
+console.log(maxConsecutive(b))
+
+
+// Missing Number
+
+function missNumber(miss) {
+    let missN = miss.length;
+
+    let totalSumMissNumber =  missN * (missN + 1) / 2;
+    let partialSum = 0;
+
+    for(let i  = 0; i < missN; i++) {
+        partialSum = partialSum +  miss[i];
+    }
+    return totalSumMissNumber - partialSum;
+}
+
+let miss = [1, 2, 5, 3, 0];
+console.log(missNumber(miss))
+
+
+// Single Number
+
+function singleNumber(sinNu) {
+     let hash = {}
+
+     for(let i = 0; i < sinNu.length; i++) {
+        if(!hash[sinNu[i]]){
+        hash[sinNu[i]]  = 1
+        } else {
+            hash[sinNu[i]]++
+        }
+     }
+          for(let i = 0; i < sinNu.length; i++) {
+            if(hash[sinNu[i]] == 1) {
+                return sinNu[i]
+            }
+          }
+}
+
+let sinNu = [1, 2, 5, 5, 1, 6, 2]
+console.log(singleNumber(sinNu))
