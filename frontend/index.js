@@ -199,6 +199,7 @@ let miss = [1, 2, 5, 3, 0];
 console.log(missNumber(miss))
 
 
+
 // Single Number
 
 function singleNumber(sinNu) {
