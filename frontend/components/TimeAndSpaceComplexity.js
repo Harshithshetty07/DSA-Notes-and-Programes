@@ -1,440 +1,223 @@
-// console.log('Hello Dsa')
-
-// let arr = {
-//     a: 10,
-//     obb:[1, 5, 6, 10]};
-// console.log(arr.obb);
-
-// function greet(name) {
-//     console.log("Welcome " + name);
-// }
-// let a = 'Traveling'
-
-// greet('Rakshith')
-// greet('Shetty')
-// greet(a);
 
 
-// function square(x) {
-//     let result = x * x;
+// Remove duplicates from sorted array.
 
-//     return result;
-// }
+function removeDuplicate(nums) {
+    let x = 0;
+    for(let i = 0; i < nums.length; i++) {
+        if(nums[i] > nums[x]) {
+            x = x + 1;
+            nums[x] = nums[i];
+        }
+    }
+    return (x + 1)
+}
 
-// let value = square(99);
-// console.log(value)
-
-
-// function voteEligible(age) {
-//     if(age < 0) {
-//         console.log('Invalid input');
-//     }
-//     else if(age < 18){
-//         console.log('Not eligible to vote')
-//     }
-//     else {
-//         console.log('Eligible to vote')
-//     }
-// }
-
-// voteEligible(20)
+let numArray = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+let removeRes = removeDuplicate(numArray)
+console.log(removeRes)
 
 
-// function evenOdd(num) {
-//     let rem = num % 2;
+// Remove Element
 
-//     if(rem == 0) {
-//         console.log('Even Number')
-//     } 
-//     else {
-//         console.log('Odd Number')
-//     }
-// }
-
-// evenOdd(844424)
-
-
-// for(let i = 0; i <= 5; i= i +2) {
-//     console.log('Hello world ' + i)
-// }
-
-// const arrs = [1, 2, 5, 8];
-// const arrResult = []
-// const length = arrs.length; // same as the i < arrs.length;
-
-// for(let i = 0; i < arrs.length; i++) {
-//     arrResult.push(arrs[i] + 2) 
-//     console.log(i)
-// }
-// console.log(arrResult)
-
-
-// let i = 0;
-
-// while(i< 5) {
-//     console.log('Hello DSA');
+function removeElement(nums, val) {
+    let x = 0;
     
-//     i++;
-// }
-
-// Problem 1 - Write a function that searches for an element in an array
-// and returns the index, if the element is not present then just return -1
-
-let arr = [4, 2, 10, 8, 3, 10]
-
-function searchElement(x) {
-    for(let i = 0; i< arr.length; i++) {
-        if(arr[i] === x) {
-            return i
-        }
-        // else {
-        //     return -1  both are same 
-        // }
-    }
-    return -1
-}
-let result = searchElement(3)
-console.log(result)
-
-
-// Problem 2 : Write a function that returns the number of negative numbers in an array
-
-let negative = [ 10, -20, 4, -65, 30, 10]
-
-function negativeNumber(negative) {
-    let count = 0;
-    for(let i = 0; i< negative.length; i++) {
-        if(negative[i] < 0) {
-
-            console.log(negative[i])   // using this code to display a -ve number in console
-            count++                   // count = count + 1
+    for(let i = 0; i < nums.length; i++) {
+        if(nums[i] !== val) {
+            nums[x] = nums[i]
+            x = x + 1;
         }
     }
-    return count
+    return x;
 }
-let total = negativeNumber(negative)
-console.log(total)
+
+let removeEleArray = [3, 2, 2, 3, 4];
+let removeElemRes = removeElement(removeEleArray, 2)
+console.log(removeElemRes)
 
 
-// Problem 3: Write a function that returns the largest number in an array
+// Reverse string
 
-let largest = [2, 10, 100, 20.2, 4, 50]
 
-function largestNumber(largest) {
-    let larNum = -Infinity;
-    for(let i = 0; i <largest.length; i++) {
-        if(largest[i] > larNum) {
-            larNum = largest[i]
+function reverseString(s) {
+    let len = s.length;
+    let halfLen = Math.floor(len / 2);
+    
+    for(let i = 0; i < halfLen; i++) {
+        let temp = s[i];
+        s[i] = s[len - 1 - i];
+        s[len - 1 - i] = temp
+    }
+    return s
+}
+
+let s = ['h', 'e', 'l', 'l', '0']
+let reverseStrRes = reverseString(s)
+console.log(reverseStrRes)
+
+
+//  Best Time to buy and sell stock
+
+function sellStock(prices) {
+
+    let min = prices[0];
+    let maxProfit = 0;
+
+    for(let i = 1; i < prices.length; i++) {
+        if(prices[i] - min > maxProfit) {
+            maxProfit = prices[i]- min;
+        }
+        if(prices[i] < min) {
+            min = prices[i]
         }
     }
-return larNum
+    return maxProfit;
 }
 
-let resLarg = largestNumber(largest)
-console.log(resLarg)
+let prices = [7, 1, 4, 5, 2, 6, 3];
+console.log(sellStock(prices))
 
 
-// Problem 4: Find second largest number in an array
+// Merge sorted array
 
-let secondLarg = [4, 10, 8, 18, 0, 7, 15, 18 ]
+// function mergeSorted(nums1, m, nums2, n) {
+//     let nums1Copy = nums1.slice(0,m);
+//     let p1 = 0;
+//     let p2 = 0;
 
-function secondLargest() {
-    if(secondLarg.length < 2) return null; 
-
-    let firstLar = 0; // -Infinity for if array has hold -ve numbers
-    let secondLar = 0;  // -Infinity for if array has hold -ve numbers
-
-    for(let i = 0; i< secondLarg.length; i++) {
-        if(secondLarg[i] > firstLar) {
-            secondLar = firstLar;
-            firstLar = secondLarg[i]
-        }
-        else if( secondLarg[i] > secondLar && secondLarg[i] != firstLar) {
-            secondLar = secondLarg[i]
-        }
-    }
-    return secondLar;
-}
-
-let secondRes = secondLargest();
-console.log(secondRes)
-
-// Loop inside another Loop
-// for(let i =0; i< 3; i++) {
-//     for(let j = 0; j< i; j++) {
-//         console.log(i , j)
+//     for(let i = 0; i < m + n; i++) {
+//         if( p2 >= n || (p1 < m && nums1Copy[p1] < nums2[p2]) ) {
+//             nums1[i] = nums1Copy[p1];
+//             p1++;
+//         } 
+//         else {
+//             nums1[i] = nums2[p2];
+//             p2++;
+//         }
 //     }
+//     return nums1
 // }
 
-// for(let i =0; i< 3; i++) {
-//     for(let j = i; j > 0; j--) {
-//         console.log(i , j)
-//     }
-// }
+// let nums1 = [1, 2, 3];
+// let nums2 = [2, 5, 6];
+// let m = nums1.length;
+// let n = nums2.length;
+// let mergeRes = mergeSorted(nums1, m, nums2, n)
+// console.log(mergeRes)
 
-// for(let i =2; i > 0; i--) {
-//     for(let j = 0; j < i; j++) {
-//         console.log(i , j)
-//     }
-// }
+// Or
 
+function mergeSorted(nums1, m, nums2, n) {
+    let p1 = m - 1;
+    let p2 = n - 1;
 
-// Star Pattern
-// Problem : * * * * create a star pattern
-//           * * * *
-//           * * * *
-//           * * * *
+    for(let i = m + n - 1; i >= 0; i--) {
 
-// answer : 
-
-function fourStar(n) {
-    for(let i = 0; i < n; i++) {
-            let row = ''
-
-        for(let j = 0; j < n; j++) {
-            row = row + '*'
+        if(p2 < 0) {
+            break;
         }
-        console.log(row)
-} 
+
+        if(p1 >= 0 && nums1[p1] > nums2[p2]) {
+            nums1[i] = nums1[p1];
+            p1--;
+        } else {
+            nums1[i] = nums2[p2];
+            p2--;
+        }
+    }
+    return nums1
 }
-        fourStar(4);
 
-        // or 
-
-        // let n = 4;
-        // for(let i = 0; i < n; i++)  {
-        //     let row = '';
-        //     for(let j = 0; j < n; j++) {
-        //         row = row + '*'
-        //     }
-        //     console.log(row)
-        // }
+let nums1 = [1, 2, 3];
+let nums2 = [2, 5, 6];
+let m = nums1.length;
+let n = nums2.length;
+let mergeRes = mergeSorted(nums1, m, nums2, n)
+console.log(mergeRes)
 
 
-     // Problem 6 : 
-     /* 
-                *
-                *   *
-                *   *  *
-                *   *  * *
-     */
+// Moves zeroes  
 
-     // Answer : 
 
-     let a = 4;
-     for(let i = 0; i < a; i++) {
-        let row = '';
-        for(let j = 0; j < i + 1; j++) {
-            row = row + '*'
+function moveZero(nums) {
+    let x = 0;
+
+    for(let i = 0; i < nums.length; i++) {
+        if(nums[i] !== 0) {
+            nums[x] = nums[i];
+            x++;
         }
-        console.log(row)
+    }
+    for(let i = x; i < nums.length; i++) {
+        nums[i] = 0
+    }
+    return nums
+}
+
+let nums = [1, 0, 2, 0, 3, 5]
+console.log(moveZero(nums))
+
+
+//  Max Consecutive Ones
+
+function maxConsecutive(b) {
+    let currCount = 0;
+    let maxCount = 0;
+
+    for(let i = 0; i < b.length; i++) {
+        if(b[i] == 1) {
+            currCount++;
+        }
+        else{
+            maxCount = Math.max(currCount, maxCount);
+            currCount = 0;
+        }
+    }
+    return Math.max(maxCount, currCount)
+}
+
+let b = [1, 0, 1, 1, 0, 0, 1, 1, 1, 2]
+console.log(maxConsecutive(b))
+
+
+// Missing Number
+
+function missNumber(miss) {
+    let missN = miss.length;
+
+    let totalSumMissNumber =  missN * (missN + 1) / 2;
+    let partialSum = 0;
+
+    for(let i  = 0; i < missN; i++) {
+        partialSum = partialSum +  miss[i];
+    }
+    return totalSumMissNumber - partialSum;
+}
+
+let miss = [1, 2, 5, 3, 0];
+console.log(missNumber(miss))
+
+
+
+// Single Number
+
+function singleNumber(sinNu) {
+     let hash = {}
+
+     for(let i = 0; i < sinNu.length; i++) {
+        if(!hash[sinNu[i]]){
+        hash[sinNu[i]]  = 1
+        } else {
+            hash[sinNu[i]]++
+        }
      }
-
-        // Problem 7 
-        /* 
-        1,
-        1, 2, 
-        1, 2, 3
-        1, 2, 3, 4
-        */
-
-        // answer: 
-
-        let c = 5;
-        for(let i = 0; i < c; i++) {   
-            let row = ''
-            for(let j = 0; j < i + 1; j++) {
-                row = row + (j + 1)
+          for(let i = 0; i < sinNu.length; i++) {
+            if(hash[sinNu[i]] == 1) {
+                return sinNu[i]
             }
-            console.log(row)
+          }
+}
 
-        }
-
-        /* 
-        Problem 8 : 
-        1
-        2, 2
-        3, 3, 3
-        4, 4, 4, 4
-        5, 5, 5, 5, 5
-        */
-
-        // answer : 
-
-        let p = 5;
-        for(let i = 0; i < p; i++) {
-            let row = '';
-            for(let j = 0; j < i + 1; j++) {
-                row = row + (i + 1);
-            }
-            console.log(row)
-        }
-
-
-        /* 
-        Problem 9: 
-        1, 2, 3, 4, 5
-        1, 2, 3, 4
-        1, 2, 3
-        1, 2
-        1
-        */
-        // answer: 
-        let l = 5;
-        for(let i = 0; i < l; i++) {
-            let row = '';
-            for(let j = 0; j < l - i; j++) {
-                row = row + (j +1)
-            }
-            console.log(row)
-        }
-
-        /* 
-        Problem 10: 
-                                *
-                            *   *
-                        *   *   *
-                    *   *   *   *
-                *   *   *   *   *
-        */
-        // answer :
-
-        for(let i = 0; i < l; i++) {
-            let row = '';
-            for(let j = 0; j < l - (i + 1); j++) {
-                row = row + '-';
-            }
-            for(let k = 0; k < i + 1; k++) {
-                row = row + '*'
-            }
-            console.log(row)
-        }
-
-        /* 
-        Problem 10: 
-        1
-        1 0
-        1 0 1
-        1 0 1 0
-        1 0 1 0 1
-        1 0 1 0 1 0
-        */
-        
-        // answer :
-
-        for(let i = 0; i < l; i++) {
-            let row = '';
-            let switchOne = 1;
-            for(let j = 0; j < i +1; j++) {
-                row = row + switchOne;
-                if(switchOne == 1) {
-                    switchOne = 0;
-                } else {
-                    switchOne = 1
-                }
-            }
-            console.log(row)
-        }
-
-        /* 
-        Problem 12 : 
-        1
-        0 1
-        0 1 0
-        1 0 1 0
-        1 0 1 0 1
-        */
-        // answer: 
-            let switchOne = 1;
-            
-        for(let i = 0; i < l; i++) {
-            let row = '';
-            for(let j = 0; j < i +1; j++) {
-                row = row + switchOne;
-                if(switchOne == 1) {
-                    switchOne = 0;
-                } else {
-                    switchOne = 1
-                }
-            }
-            console.log(row)
-        }
-
-
-        /* Problem 13: Write a function that returns the count of digits in a number 
-        */
-
-        function countNumber(n) {
-            if(n == 0) return 1;
-            n = Math.abs(n)
-            let count = 0;
-
-            while( n > 0 ) {
-                n = Math.floor(n / 10);
-                count++
-            }
-            return count
-        }
-        let countNumberRes = countNumber(-259);
-        console.log(countNumberRes)
-
-        
-        /* Problem 14 : Palindrome Number - means if we read a number left to right or right to left it should be same number ex: 121
-        
-        */
-         function palidromeNumber(n) {
-            if(n < 0 ) return false
-            
-            let rev = 0;
-            let nCopy = n
-
-            while(n > 0) {
-                let rem = n % 10;                  // This will gives you last number
-                rev = (10 * rev) + rem;
-                n = Math.floor(n / 10)                     // This will removes the last number
-            }
-            // if(rev == nCopy) {
-            //     return true
-            // }
-            // else {
-            //     return false
-            // }
-
-            return rev === nCopy
-         }
-         let palidromeNumberRes = palidromeNumber(121);
-         console.log(palidromeNumberRes)
-
-        /*  Problem 15 : Reverse Interger
-        
-        */
-
-        // Answer :
-
-        function reverseInteger(x) {
-            let XCopy = x;
-
-            x = Math.abs(x);
-            let rev = 0;
-
-            while(x > 0) {
-                let last = x % 10;
-                rev = (10 * rev) + last;
-                x = Math.floor(x / 10);
-            }
-            // if( XCopy < 0) {
-            //     return -rev
-            // } else {
-            //     return rev
-            // }
-
-            let limit = Math.pow(2, 31);
-            // let limit = 2**31        -------- Another way to calculate the power range
-
-            if(rev < -limit || rev > limit) return 0;
-
-            return (XCopy < 0) ? -rev : rev;
-        }
-
-        let reverseIntegerRes = reverseInteger(445);
-        console.log(reverseIntegerRes)
+let sinNu = [1, 2, 5, 5, 1, 6, 2]
+console.log(singleNumber(sinNu))
