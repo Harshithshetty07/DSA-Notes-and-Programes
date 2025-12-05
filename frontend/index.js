@@ -75,6 +75,7 @@ function power(n) {
 console.log(power(5 ))
 
 
+
 // Example 7: Fibonacci Number
 
 let finArray = []
