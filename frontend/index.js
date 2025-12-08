@@ -38,7 +38,7 @@ function bubbleSort(bbsort) {
 
   for(let i = 0; i < n - 1; i++) {
 
-    let isSwapped = false;
+    let isSwapped = false;   // This is supports to stop iteration if array is already sorted there is no need to sort again
 
     for(let j = 0; j < n - 1 - i; j++) {
       if(bbsort[j] > bbsort[j + 1]) {
