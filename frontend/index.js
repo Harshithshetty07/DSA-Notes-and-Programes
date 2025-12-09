@@ -57,3 +57,55 @@ function bubbleSort(bbsort) {
 let resBB = bubbleSort(bbsort)
 
 console.log(resBB)
+
+
+// SELECTION sort
+
+let selcArr = [7, -10, 1, 5, 3, 4, 2]
+let n = selcArr.length;
+
+function selectionSort(selcArr) {
+  for(let i = 0; i < n - 1; i++) {
+    let min = i;
+    for(let j = i + 1; j < n; j++) {
+      if(selcArr[j] < selcArr[min]) {
+        min = j
+      }
+    }
+    if(min != i ) {
+    let temps = selcArr[i]
+    selcArr[i] = selcArr[min]
+    selcArr[min] = temps
+    }
+   
+  }
+  return selcArr
+}
+
+let resSelS = selectionSort(selcArr)
+console.log(resSelS)
+
+
+// INSERTION sort
+
+let inseArr = [7, 5, 3, 4, 1, 2]
+
+function insortionSort(inseArr) {
+  let n = inseArr.length;
+
+  for(let i = 1; i < n; i++) {
+    
+    let curr = inseArr[i];
+    let prev = i - 1;
+
+    while( inseArr[prev] > curr && prev >= 0) {
+      inseArr[prev + 1] = inseArr[prev];
+      prev--;
+    }
+    inseArr[prev + 1] = curr;
+  }
+  return inseArr
+}
+
+let resIns = insortionSort(inseArr);
+console.log(resIns)
