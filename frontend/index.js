@@ -245,3 +245,80 @@ function intersecLinked(headA, headB) {
     }
     return null
 }
+
+
+// Problem 7:  Remove linked list element
+
+function removeLinked(head, val) {
+    let sentinel = new ListNode();   // this helps add one extra node in first position
+    sentinel.next = head;
+    let prev = sentinel;
+    while(prev && prev.next) {
+        if(prev.next.val === val) {
+            prev.next = prev.next.next;
+        } else {
+            prev = prev.next
+        }
+    }
+    return sentinel.next
+}
+
+
+// Problem 8: Remove Nth node from end of list
+
+function removeNth(head, n) {
+    let sentinel = new ListNode();
+    sentinel.next = head;
+    let length = 0;
+
+    while(head) {
+        head = head.next;
+        length++
+    }
+    let prevPos = length - n;
+    let prev = sentinel;
+
+    for(let i = 0; i < prevPos; i++) {
+        prev = prev.next
+    }
+    prev.next = prev.next.next;
+
+    return sentinel.next
+}
+
+
+// Problem 9: Remove duplicates from sorted list
+
+function removeDuplicates(head) {
+    let curr = head;
+
+    while(curr && curr.next) {
+        if(curr.val === curr.next.val) {
+            curr.next = curr.next.next
+        } else {
+            curr = curr.next
+        }
+    }
+    return head
+}
+
+
+// Problem 10: Odd Even linked list
+
+function oddEvenLinked(head) {
+
+    if(!head || !head.next) return head
+
+    let odd = head;
+    let even = head.next;
+    let evenStore = even;
+
+    while(even.next && odd.next) {
+        odd.next = odd.next.next;
+        even.next = even.next.next;
+        odd = odd.next;
+        even = even.next
+    }
+    odd.next = evenStore;
+    return head
+}
