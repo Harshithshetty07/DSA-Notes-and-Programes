@@ -322,3 +322,64 @@ function oddEvenLinked(head) {
     odd.next = evenStore;
     return head
 }
+
+
+// Problem 11: Add 2 numbers
+
+function addTwoNumber(l1, l2) {
+
+    let ans = new ListNode();
+    let ansCopy = ans;
+    let carry = 0;
+    while(l1 || l2 || carry) {
+        let sum = (!l1 ? 0 : l1.val) + (!l2 ? 0 : l2.val) + carry;
+        carry = Math.floor(sum / 10);
+        let digit = sum % 10;
+        let node = new ListNode(digit);
+        ans.next = node;
+        ans = ans.next;
+        l1 = l1 && l1.next
+        l2 = l2 && l2.next
+
+    }
+    return ansCopy.next
+}
+
+
+// Problem 12: Merge two sorted linked list
+
+
+function mergeTwoLinked(l1, l2) {
+    // if(!l1) return l2;
+    // if(!l2) return l1;
+
+    let head = new ListNode()
+    let curr  = head
+
+    // if(l1.val < l2.val) {
+    //     curr = l1;
+    //     l1 = l1.next
+    // } else {
+    //     curr = l2;
+    //     l2 = l2.next
+    // }
+    // let currCopy = curr
+
+    while(l1 && l2) {
+        if(l1.val < l2.val) {
+            curr.next = l1;
+            l1 = l1.next
+        } else {
+            curr.next = l2;
+            l2 = l2.next
+        }
+        curr = curr.next
+    }
+    if(!l1) {
+        curr.next = l2
+    } 
+    if(!l2) {
+        curr.next = l1
+    }
+    return head.next
+}
