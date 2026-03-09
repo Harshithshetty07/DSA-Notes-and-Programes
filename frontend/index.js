@@ -65,3 +65,76 @@ function findWordsChar(word, x) {
 }
 
 console.log(findWordsChar(words, 'a'))
+
+
+// Problem 3: Jewels and stones
+
+let arr = 'aAAbbbb'
+
+function jewelsStones(str, val) {
+    let count = 0;
+    for(let i = 0; i < str.length; i++) {
+
+        for(let j = 0; j < val.length; j++) {
+            if(val[i] === str[i]) {
+                count++;
+                break;
+            }
+        }
+
+
+        // if(val.includes(str[i])) {
+        //     count++
+        // }
+    }
+    return count
+}
+
+// answer 2
+
+function jSet(str, val) {
+    let res = new Set(val);
+    // for(let i = 0; i< str.length; i++) {
+    //     res.add(str[i]);
+    // }
+    let count = 0
+    for(let i = 0; i< str.length; i++) {
+        if(res.has(str[i])) {
+            count++
+        }
+    }
+    return count
+}
+
+
+console.log(jewelsStones(arr, 'aA'))
+console.log(jSet(arr, 'aA'))
+
+
+// Problem 4: Split a string in balanced strings
+
+let s = 'RLRRLLRLRL'
+
+function splitString(s) {
+
+    let R = 0;
+    let L = 0;
+    let count = 0;
+
+    for(let i = 0; i < s.length; i++) {
+        if(s[i] === 'R') {
+            R++
+        } 
+        else {
+            L++
+        }
+        if(L === R) {
+            count++
+            R = 0;
+            L = 0;
+        }
+    }
+    return count
+}
+
+console.log(splitString(s))
