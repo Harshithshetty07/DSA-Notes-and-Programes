@@ -138,3 +138,60 @@ function splitString(s) {
 }
 
 console.log(splitString(s))
+
+
+// Problem 5: Find most frequent vowel and consonant
+
+let s1 = 'successes'
+
+function vowel(s) {
+    let map = {}  // Store all the values with freq in a map
+    for(let i = 0; i < s.length; i++) {
+        if(!map[s[i]]) {
+            map[s[i]] = 1
+        } else {
+            map[s[i]]++
+        }
+    }
+    // find the max vowels and consonant inside the map
+    let vowels = ['a', 'e', 'i', 'o', 'u']
+    let maxVowels = 0;
+    let maxConsonant = 0;
+    let keys = Object.keys(map)
+
+    for(let i = 0; i < keys.length; i++) {
+        if(vowels.includes(keys[i])) {
+            // maxVowels = Math.max(maxVowels, map[s[i]])
+            if(map[keys[i]] > maxVowels) {
+                maxVowels = map[keys[i]]
+            }
+        } else {
+            // maxConsonant = Math.max(maxConsonant, map[s[i]])
+            if(map[keys[i]] > maxConsonant) {
+                maxConsonant = map[keys[i]]
+            }
+        }
+    }
+return maxConsonant + maxVowels
+}
+
+console.log(vowel(s1))
+
+
+// Problem 6: Largest odd number in string
+
+let num = '52'
+
+function oddNumber(s) {
+    let n = s.length - 1;
+    while (n >= 0) {
+        if(Number(s[n]) % 2 == 1) {
+            return s.substring(0, n+1)
+        } else {
+            n--
+        }
+    }
+    return '';
+}
+
+console.log(oddNumber(num))
