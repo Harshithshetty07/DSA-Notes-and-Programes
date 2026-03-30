@@ -195,3 +195,53 @@ function oddNumber(s) {
 }
 
 console.log(oddNumber(num))
+
+
+// Problem 7: Valid Anagram
+
+let c = 'anagram';
+let t = 'nagaram'
+
+function anagram(c, t) {
+    if(c.length !== t.length) return false
+    let map = {}
+
+    for(let i = 0; i < c.length; i++) {
+        if(!map[c[i]]) {
+            map[c[i]] = 1
+        } else {
+            map[c[i]]++
+        }
+    }
+    for(let i = 0; i < t.length; i++) {
+        if(!map[t[i]] || map[t[i]] < 0) {
+            return false
+        } else {
+            map[t[i]]--
+        }
+    }
+    return true
+}
+
+console.log(anagram(c, t))
+
+
+// Problem 8: Longest common prefix
+
+let strs = ['flower', 'flow', 'flight']
+
+function commonPrefix(s) {
+    let x = 0;
+    while(x < s[0].length) {
+        let ch = s[0][x]
+        for(let i = 1; i < s.length; i++) {
+            if(ch !== s[i][x] || x == s[i].length) {
+                return s[0].substring(0, x)
+            } 
+        } 
+        x++;
+    }
+    return s[0]
+}
+
+console.log(commonPrefix(strs))
