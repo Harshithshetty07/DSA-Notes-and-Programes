@@ -290,3 +290,31 @@ function reverseString2(r, k) {
 }
 
 console.log(reverseString2(r, k))
+
+
+// Problem 10: Valid palindrome - string
+
+let sts = 'A man, a plan, a canal: Panama'; 
+
+function validPalindromString(s) {
+
+    s = s.toLowerCase();
+
+    let filtered = '';
+    let rev = '';
+
+    for(let i = 0; i < s.length; i++) {
+        if(s[i].match(/[a-z0-9]/i)) {
+            filtered += s[i]
+            rev = s[i] + rev
+        }
+    }
+
+
+
+    // let rev = filtered.split("").reverse().join("");
+
+    return filtered === rev;
+}
+
+console.log(validPalindromString(sts))
