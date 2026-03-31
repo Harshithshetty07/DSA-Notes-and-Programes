@@ -245,3 +245,48 @@ function commonPrefix(s) {
 }
 
 console.log(commonPrefix(strs))
+
+
+// Problem 9: Reverse string 2
+
+let r = 'abcdefg'  // o/p k = 2 bacdfeg
+let k = 2
+
+function reverseString2(r, k) {
+    r = r.split('');
+
+    for(let x = 0; x < r.length; x =  x + ( 2 * k)) {
+        // reverse the first k elements starting from x
+
+        let n = k
+        let mid = Math.floor( n / 2);
+        for(let i = 0; i < mid; i++) {
+            let temp = r[ x + i]
+            r[x + i] = r[x + n - 1 - i]
+            r[x+ n - 1 - i] = temp
+        }
+    }
+
+        return r.join("")
+
+        // let mid = Math.floor( k / 2)
+        // for(let  i = 0; i < mid; i++) {
+        //     let temp = r[i]
+        //     r[i] = r[k - 1 - i]
+        //     r[ - 1 - i] = temp
+        // }
+
+    
+
+    // reverse a string
+    // let n = r.length;
+    // let mid = Math.floor(n / 2)
+
+    // for(let i = 0; i < mid; i++) {
+    //     let temp = r[i]
+    //     r[i] = r[n - 1 - i];
+    //     r[n - 1 - i] = temp
+    // }
+}
+
+console.log(reverseString2(r, k))
