@@ -310,11 +310,40 @@ function validPalindromString(s) {
         }
     }
 
-
-
     // let rev = filtered.split("").reverse().join("");
 
     return filtered === rev;
 }
 
 console.log(validPalindromString(sts))
+
+
+// Answer 2 --------------------- T = O(N) S = O(1)
+
+function validPalindromString2(s) {
+
+    s = s.toLowerCase()
+
+    let i = 0;
+    let j = s.length - 1;
+
+    while(i < j) {
+        if(!s[i].match(/[a-z0-9]/i)) {
+            i++;
+        } else if(!s[j].match(/[a-z0-9]/i)) {
+            j--;
+        } else if(s[i] === s[j]) {
+            i++;
+            j--;
+        } else {
+            return false
+        }
+    }
+    return true;
+}
+
+console.log(validPalindromString2(sts))
+
+
+// Problem 11: Isomorphic Strings
+
