@@ -347,3 +347,74 @@ console.log(validPalindromString2(sts))
 
 // Problem 11: Isomorphic Strings
 
+let iso = 'foo';
+let iso1 = 'bar';
+
+function Isomorphic(s, t) {
+    if(s.length !== t.length) return false;
+
+    let mapStoT = {};
+    let mapTtoS = {};
+
+    for(let i = 0; i < s.length; i++) {
+        if(!mapStoT[s[i]] && !mapTtoS[t[i]]) {
+            mapStoT[s[i]] = t[i];
+            mapTtoS[t[i]] = s[i]
+        } else if(mapTtoS[t[i]] !== s[i]){
+            return false
+        } else if(mapStoT[s[i]] !== t[i]) {
+            return false
+        }
+    }
+    return true
+}
+
+console.log(Isomorphic(iso, iso1))
+
+
+
+// Problem 12: Group Anagram
+
+let strA = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat']
+
+function groupAnagram(s) {
+    let map = {}
+    for(let i = 0; i < s.length; i++) {
+        let sortedStr = s[i].split('').sort().join('');
+        if(!map[sortedStr]) {
+            map[sortedStr] = [s[i]]
+        } else {
+            map[sortedStr].push(s[i])
+        }
+    }
+    return [...Object.values(map)]
+}
+
+console.log(groupAnagram(strA))  // T = O(n * m logm)  S = O(n * m)
+
+
+// Answer 2
+
+function groupAnagram2(s) {
+    let map = {}
+    for(let i = 0; i < s.length; i++) {
+        let arr = Array(26).fill(0);
+        let s1 = s[i];
+        for(let j = 0; j < s1.length; j++) {
+            let index = s1[j].charCodeAt()- 'a'.charCodeAt()
+            arr[index]++
+        }
+        let key = '';
+        for(let k = 0; k < 26; k++) {
+            key = key + '#' + arr[k]
+        }
+        if(!map[key]) {
+            map[key] = [s1]
+        } else {
+            map[key].push(s1)
+        }
+    }
+    return [... Object.values(map)] 
+}
+
+console.log(groupAnagram2(strA)) // T = O (n * m)  S = O(n * m)
