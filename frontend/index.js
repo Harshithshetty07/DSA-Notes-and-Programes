@@ -24,3 +24,58 @@ function mySqrt(x) {
 }
 
 console.log(mySqrt(36))
+
+
+// Problem 2: Guess number higher or lower
+
+function guessNumber(n) {
+    let l = 1;
+    let r = n;
+
+    while(l <= r) {
+        let mid = l + Math.floor((r - l) / 2);
+        let res = guess(mid)
+        if(res === 0) {
+            return mid
+        } else if(res < 0) {
+            r = mid - 1
+        } else {
+            l = mid + 1
+        }
+    }
+    return -1
+}
+
+// console.log(guessNumber(10))
+
+
+// Problem 3: Search in Rotated sorted array
+
+function rotateSorted(nums, target) {
+    let l = 0;
+    let r = nums.length - 1;
+    while(l <= r) {
+        let mid = l + Math.floor((r - l) / 2)
+        if(target === nums[mid]) {
+            return mid
+        }
+        // left side sorted
+        if(nums[l] <= nums[mid]) {
+            if(target < nums[mid] && target >= nums[l]) {
+                r = mid - 1
+            } else {
+                l = mid + 1
+            }
+        }
+        // Right side sorted
+        else {
+            if(target > nums[mid] && target <= nums[r]) {
+                l = mid + 1
+            } else {
+                r = mid - 1
+            }
+        }
+    }
+}
+
+console.log(rotateSorted([4, 5, 6, 7, 8, 0, 1,2,3], 1))
