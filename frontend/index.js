@@ -85,10 +85,10 @@ console.log(rotateSorted([4, 5, 6, 7, 8, 0, 1,2,3], 1))
 
 function firstBadVersion(n, bad) {
     let l = 1;
-    let r = n.length - 1;
+    let r = n;
 
     while(l < r) {
-    let mid = l + Math.floor((r - l) / 2)
+    let m = l + Math.floor((r - l) / 2)
         if(!bad(mid)) {
             l = m + 1
         } else {
