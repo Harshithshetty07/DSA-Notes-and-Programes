@@ -8,7 +8,7 @@ function mySqrt(x) {
     let left = 2;
     let rig = Math.floor(x / 2);
 
-    while(left < rig) {
+    while(left <= rig) {
         // let mid = Math.floor((left + rig) / 2);
         let mid = Math.floor(left + (rig - left) / 2)
         if(x === mid**2) {
@@ -99,3 +99,22 @@ function firstBadVersion(n, bad) {
 }
 
 console.log(firstBadVersion([1, 2, 3, 4, 5], 4))
+
+
+// Problem 5: Find Peak Element
+
+function findPeakElement(num) {
+     let l = 0
+    let r = num.length - 1;
+    while(l < r) {
+        let m = l + Math.floor((r - l) / 2)
+        if(num[m] < num[m + 1]) {
+            l = m + 1
+        } else {
+            r = m
+        }
+    }
+    return l
+}
+
+console.log(findPeakElement([1,2,1,3,5,6,4]))
