@@ -142,3 +142,7 @@ console.log(newHeapss.extract());
 console.log(newHeaps.extract());
 
 console.log(newHeaps)
+
+
+// Heap Sort
+
