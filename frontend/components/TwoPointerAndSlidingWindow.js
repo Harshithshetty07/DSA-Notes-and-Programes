@@ -65,3 +65,55 @@ The substring "BBBB" has the longest repeating letters, which is 4.
 There may exists other ways to achieve this answer too.
 */
 
+
+
+// Problem 4: Permutation in String
+
+/*
+
+Example 1:
+
+Input: s1 = "ab", s2 = "eidbaooo"
+Output: true
+Explanation: s2 contains one permutation of s1 ("ba").
+Example 2:
+
+Input: s1 = "ab", s2 = "eidboaoo"
+Output: false
+*/
+
+var checkInclusion = function(s1, s2) {
+    
+    let hashW = Array(26).fill(0);
+    let hashS = Array(26).fill(0);
+
+    for(let i = 0; i < s1.length; i++) {
+        ++hashS[s1.charCodeAt(i) - 97]
+        ++hashW[s2.charCodeAt(i) - 97]
+    }
+
+    let i = 0;
+    let j = s1.length - 1;
+
+    while(j < s2.length) {
+        if(isHashSame(hashS, hashW)) {
+            return true
+        } else {
+            --hashW[s2.charCodeAt(i) - 97]
+            i++
+            j++
+            ++hashW[s2.charCodeAt(j) - 97]
+
+        }
+    }
+    return false
+};
+
+var isHashSame = function(hashW, hashS) {
+    for(let i = 0; i < 26; i++) {
+        if(hashS[i] !== hashW[i]) {
+            return false
+        }
+    }
+    return true
+}
